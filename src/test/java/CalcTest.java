@@ -20,6 +20,7 @@ public class CalcTest extends BaseClassTest {
         Assert.assertEquals(calculator.sum(2, 3), 5, "Неверная сумма двух чисел");
         //Assert.assertEquals(calculator.sum(2, 3), 5);
         counter++;
+
     }
 
     @Test(enabled = false)
