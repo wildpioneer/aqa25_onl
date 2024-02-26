@@ -7,7 +7,7 @@ import java.beans.ExceptionListener;
 import java.util.List;
 import java.util.Random;
 
-public class CalcTest extends BaseClassTest {
+public class CalcTest extends BaseTest {
     private int count = 0;
 
     @BeforeMethod
@@ -17,7 +17,7 @@ public class CalcTest extends BaseClassTest {
 
     @Test
     public void testSum() {
-        Assert.assertEquals(calculator.sum(2, 3), 5, "Неверная сумма двух чисел");
+        Assert.assertEquals(calculator.sum(2, 3), 6, "Неверная сумма двух чисел");
         //Assert.assertEquals(calculator.sum(2, 3), 5);
         counter++;
 

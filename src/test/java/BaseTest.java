@@ -1,8 +1,12 @@
 import org.testng.annotations.*;
 
+import java.util.Random;
+
+@Listeners(Listener.class)
 public class BaseTest {
     protected static int counter = 0;
     protected Calculator calculator = new Calculator();
+    protected int var = new Random().nextInt();
 
     @BeforeSuite
     public void beforeSuite() {
