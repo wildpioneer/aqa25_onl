@@ -8,6 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 public class SmokeTest {
     private WebDriver driver;
@@ -33,7 +34,16 @@ public class SmokeTest {
 
         WebElement result = driver.findElement(By.id("imt-result"));
 
-        Assert.assertEquals(result.getText(), "17.4 - Недостаточная (дефицит) масса тела");
+        Assert.assertEquals(result.getText(), "17.3 - Недостаточная (дефицит) масса тела");
+
+        SoftAssert softAssert = new SoftAssert();
+
+        softAssert.assertEquals(result.getText(), "17.4 - Недостаточная (дефицит) масса тела");
+        softAssert.assertEquals(result.getText(), "17.3 - Недостаточная (дефицит) масса тела");
+        softAssert.assertEquals(result.getText(), "17.1 - Недостаточная (дефицит) масса тела");
+        softAssert.assertEquals(result.getText(), "17 - Недостаточная (дефицит) масса тела");
+
+        softAssert.assertAll();
     }
 
     @Test
