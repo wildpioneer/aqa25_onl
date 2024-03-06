@@ -85,5 +85,28 @@ public class CssLocatorTest {
         // Поиск всех элементов у которых присутствует аттрибут title со значением содержащим какой текст
         Assert.assertEquals(1, driver.findElements(By.cssSelector("[title*=beaut]")).size());
 
+        // Поиск всех disabled элементов
+        Assert.assertEquals(1, driver.findElements(By.cssSelector(":disabled")).size());
+        //Assert.assertEquals(1, driver.findElements(By.cssSelector("button:disabled")).size());
+
+        // Поиск всех enabled элементов
+        Assert.assertEquals(8, driver.findElements(By.cssSelector(":enabled")).size());
+
+        // Поиск всех выборанных элементов
+        Assert.assertEquals(1, driver.findElements(By.cssSelector("input[name='rr']:checked")).size());
+        Assert.assertEquals(2, driver.findElements(By.cssSelector(":checked")).size());
+
+        // Поиск всех элементов c пустым телом
+        Assert.assertEquals(16, driver.findElements(By.cssSelector(":empty")).size());
+
+        // Поиск элемента с тэгом p и которым является первым дочерним элементом
+        Assert.assertEquals(1, driver.findElements(By.cssSelector("p:first-child")).size());
+        Assert.assertEquals(1, driver.findElements(By.cssSelector("li:first-child")).size());
+
+        // Поиск элемента с тэгом p и которым является последним дочерним элементом
+        Assert.assertEquals(2, driver.findElements(By.cssSelector("p:last-child")).size());
+
+        // Поиск элемента с тэгом p и которым является n-ым дочерним элементом
+        Assert.assertEquals(1, driver.findElements(By.cssSelector("p:nth-child(2)")).size());
     }
 }
