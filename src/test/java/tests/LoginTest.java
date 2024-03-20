@@ -9,6 +9,7 @@ import pages.LoginPage;
 import pages.projects.AddProjectPage;
 import pages.projects.EditProjectPage;
 import pages.projects.ProjectBasePage;
+import steps.NavigationSteps;
 
 public class LoginTest extends BaseTest {
 
