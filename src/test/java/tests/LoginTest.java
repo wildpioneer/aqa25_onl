@@ -4,24 +4,33 @@ import baseEntities.BaseTest;
 import configuration.ReadProperties;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.DashboardPage;
 import pages.LoginPage;
-import pages.ProjectPage;
+import pages.projects.AddProjectPage;
+import pages.projects.EditProjectPage;
+import pages.projects.ProjectBasePage;
 
 public class LoginTest extends BaseTest {
 
     @Test
     public void successfulLoginTest() throws InterruptedException {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.getEmailInput().sendKeys("atrostyanko@gmail.com");
-        loginPage.getPasswordInput().sendKeys(ReadProperties.password());
-        loginPage.clickLoginButton();
+        loginPage.login(ReadProperties.username(), ReadProperties.password());
 
-        Thread.sleep(4000);
+        DashboardPage dashboardPage = new DashboardPage(driver);
+        dashboardPage.topMenuPage.getTopPanel();
+
+        Assert.assertTrue(dashboardPage.isPageOpened());
     }
 
     @Test
     public void successfulLoginTest1() throws InterruptedException {
         LoginPage loginPage = new LoginPage(driver);
-        ProjectPage projectPage = new ProjectPage(driver);
+        loginPage.login(ReadProperties.username(), ReadProperties.password());
+
+        driver.get("https://aqa2504.testrail.io/index.php?/projects/overview/2");
+
+        DashboardPage dashboardPage = new DashboardPage(driver, true);
+        Assert.assertTrue(dashboardPage.isPageOpened());
     }
 }

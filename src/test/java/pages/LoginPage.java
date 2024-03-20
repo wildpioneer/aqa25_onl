@@ -1,12 +1,15 @@
 package pages;
 
 import baseEntities.BasePage;
+import configuration.ReadProperties;
 import core.BrowserService;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class LoginPage extends BasePage {
+    private final static String pagePath = "";
+
     // Блок описания локаторов для элементов
     private final By emailInputLocator = By.id("name");
     private final By passwordInputLocator = By.id("password");
@@ -17,20 +20,36 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
+    @Override
+    protected By getPageIdentifier() {
+        return emailInputLocator;
+    }
+
+    @Override
+    protected String getPagePath() {
+        return pagePath;
+    }
+
     // Блок атомарных методов
     public WebElement getEmailInput() {
-        return driver.findElement(emailInputLocator);
+        return waitsService.waitForVisibilityLocatedBy(emailInputLocator);
     }
 
     public WebElement getPasswordInput() {
-        return driver.findElement(passwordInputLocator);
+        return waitsService.waitForVisibilityLocatedBy(passwordInputLocator);
     }
 
     public WebElement getLoginButton() {
-        return driver.findElement(loginButtonLocator);
+        return waitsService.waitForVisibilityLocatedBy(loginButtonLocator);
     }
 
     public void clickLoginButton() {
         getLoginButton().click();
+    }
+
+    public void login(String username, String password) {
+        getEmailInput().sendKeys(username);
+        getPasswordInput().sendKeys(password);
+        clickLoginButton();
     }
 }
