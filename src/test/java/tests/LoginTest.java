@@ -9,28 +9,35 @@ import pages.LoginPage;
 import pages.projects.AddProjectPage;
 import pages.projects.EditProjectPage;
 import pages.projects.ProjectBasePage;
+import steps.NavigationSteps;
 
 public class LoginTest extends BaseTest {
 
     @Test
     public void successfulLoginTest() throws InterruptedException {
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.login(ReadProperties.username(), ReadProperties.password());
+        NavigationSteps navigationSteps = new NavigationSteps(driver);
+        navigationSteps.login(ReadProperties.username(), ReadProperties.password());
 
-        DashboardPage dashboardPage = new DashboardPage(driver);
-        dashboardPage.topMenuPage.getTopPanel();
-
-        Assert.assertTrue(dashboardPage.isPageOpened());
+        Assert.assertTrue(new DashboardPage(driver).isPageOpened());
     }
 
     @Test
-    public void successfulLoginTest1() throws InterruptedException {
+    public void wrongPasswordLoginTest() {
+        NavigationSteps navigationSteps = new NavigationSteps(driver);
+        navigationSteps.login(ReadProperties.username(), "sdasd");
+
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.login(ReadProperties.username(), ReadProperties.password());
 
-        driver.get("https://aqa2504.testrail.io/index.php?/projects/overview/2");
+        Assert.assertEquals(loginPage.getErrorText(), "Email/Login or Password is incorrect. Please try again.");
+    }
 
-        DashboardPage dashboardPage = new DashboardPage(driver, true);
-        Assert.assertTrue(dashboardPage.isPageOpened());
+    @Test
+    public void wrongEmailLoginTest() {
+        NavigationSteps navigationSteps = new NavigationSteps(driver);
+        navigationSteps.login("sdasd", ReadProperties.password());
+
+        LoginPage loginPage = new LoginPage(driver);
+
+        Assert.assertEquals(loginPage.getErrorText(), "Email/Login or Password is incorrect. Please try again.");
     }
 }

@@ -10,12 +10,10 @@ import org.testng.annotations.*;
 @Listeners(Listener.class)
 public class BaseTest {
     protected WebDriver driver;
-    protected WaitsService waitsService;
 
     @BeforeMethod
     public void setup() {
         driver = new BrowserService().getDriver();
-        waitsService = new WaitsService(driver);
 
         driver.get(ReadProperties.getUrl());
     }
