@@ -13,24 +13,25 @@ import pages.projects.ProjectBasePage;
 public class LoginTest extends BaseTest {
 
     @Test
-    public void successfulLoginTest() throws InterruptedException {
+    public void successfulLoginTest() {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.login(ReadProperties.username(), ReadProperties.password());
 
-        DashboardPage dashboardPage = new DashboardPage(driver);
-        dashboardPage.topMenuPage.getTopPanel();
-
-        Assert.assertTrue(dashboardPage.isPageOpened());
+        Assert.assertTrue(
+                loginPage
+                        .successfulLogin(ReadProperties.username(), ReadProperties.password())
+                        .isPageOpened()
+        );
     }
 
     @Test
-    public void successfulLoginTest1() throws InterruptedException {
+    public void wrongEmailLoginTest() {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.login(ReadProperties.username(), ReadProperties.password());
 
-        driver.get("https://aqa2504.testrail.io/index.php?/projects/overview/2");
-
-        DashboardPage dashboardPage = new DashboardPage(driver, true);
-        Assert.assertTrue(dashboardPage.isPageOpened());
+        Assert.assertEquals(
+                loginPage
+                        .incorrectLogin("sdsads", ReadProperties.password())
+                        .getErrorText(),
+                "Email/Login or Password is incorrect. Please try again."
+        );
     }
 }
