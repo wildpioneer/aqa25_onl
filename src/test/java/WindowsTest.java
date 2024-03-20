@@ -12,7 +12,7 @@ public class WindowsTest extends BaseTest {
     public void newTabTest() throws InterruptedException {
         driver.get("http://the-internet.herokuapp.com/windows");
 
-        String originalWindow = driver.getWindowHandle();
+        String originalWindowHandle = driver.getWindowHandle();
 
         driver.findElement(By.linkText("Click Here")).click();
 
@@ -20,9 +20,12 @@ public class WindowsTest extends BaseTest {
         List<String> windowHandleList = new ArrayList<>(windowHandlesSet);
 
         driver.switchTo().window(windowHandleList.get(1));
-        driver.switchTo().window(originalWindow);
 
-        Thread.sleep(5000);
+        //Thread.sleep(5000);
         Assert.assertEquals(driver.findElement(By.tagName("h3")).getText(), "New Window");
+
+        driver.close();
+        driver.switchTo().window(originalWindowHandle);
+        Assert.assertEquals(driver.getWindowHandles().size(), 1);
     }
 }
