@@ -10,7 +10,7 @@ public class DashboardPage extends BasePage {
     private final static String pagePath = "/index.php?/dashboard";
 
     // Блок описания локаторов для элементов
-    private final By headerTitleLabelLocator =
+    private static final By headerTitleLabelLocator =
             By.xpath("//div[contains(@class, 'content-header-title') and contains(text(), 'All Projects')]");
 
     public TopMenuPage topMenuPage;

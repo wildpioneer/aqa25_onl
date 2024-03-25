@@ -11,7 +11,7 @@ public class LoginPage extends BasePage {
     private final static String pagePath = "";
 
     // Блок описания локаторов для элементов
-    private final By emailInputLocator = By.id("name");
+    private static final By emailInputLocator = By.id("name");
     private final By passwordInputLocator = By.id("password");
     private final By loginButtonLocator = By.id("button_primary");
     private final By errorTextLabelLocator = By.className("error-text");
