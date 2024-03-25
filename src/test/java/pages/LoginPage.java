@@ -65,21 +65,4 @@ public class LoginPage extends BasePage {
     public String getErrorText() {
         return getErrorTextLabel().getText();
     }
-
-    private void login(String username, String password) {
-        this
-                .setEmail(username)
-                .setPassword(password)
-                .clickLoginButton();
-    }
-
-    public DashboardPage successfulLogin(String username, String password) {
-        login(username, password);
-        return new DashboardPage(driver);
-    }
-
-    public LoginPage incorrectLogin(String username, String password) {
-        login(username, password);
-        return this;
-    }
 }
