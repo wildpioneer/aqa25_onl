@@ -25,9 +25,10 @@ public class LoginTest extends BaseTest {
     public void successfulLoginTest1() throws InterruptedException {
         NavigationSteps navigationSteps = new NavigationSteps(driver);
 
-        User admin = new User();
-        admin.setEmail(ReadProperties.username());
-        admin.setPassword(ReadProperties.password());
+        User admin = new User.Builder()
+                .withEmail(ReadProperties.username())
+                .withPassword(ReadProperties.password())
+                .build();
 
         Project expectedProject = new Project();
         expectedProject.setName("sfsdfsd");
