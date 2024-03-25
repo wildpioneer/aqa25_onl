@@ -22,8 +22,8 @@ public class AddProjectPage extends ProjectBasePage {
     }
 
     @Override
-    protected By getPageIdentifier() {
-        return addProjectButtonLocator;
+    protected WebElement getPageIdentifier() {
+        return driver.findElement(addProjectButtonLocator);
     }
 
     @Override
