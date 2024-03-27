@@ -34,6 +34,12 @@
             <artifactId>webdrivermanager</artifactId>
             <version>${webdrivermanager.version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-testng -->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>2.26.0</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -46,9 +52,9 @@
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
-                    <suiteXmlFiles>
+                    <!--suiteXmlFiles>
                         <suiteXmlFile>target/test-classes/${suiteFileName}</suiteXmlFile>
-                    </suiteXmlFiles>
+                    </suiteXmlFiles-->
                 </configuration>
                 <dependencies>
                     <dependency>
