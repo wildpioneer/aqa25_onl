@@ -1,13 +1,12 @@
 package pages;
 
 import baseEntities.BasePage;
-import configuration.ReadProperties;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class TopMenuPage extends BasePage {
-    private static final By topPanelLocator = By.className("top-panel");
+    private final By topPanelLocator = By.className("top-panel");
 
     // Блок иницализации
     public TopMenuPage(WebDriver driver) {
@@ -25,7 +24,7 @@ public class TopMenuPage extends BasePage {
     }
 
     @Override
-    protected void load() {
+    public void openPageByUrl() {
     }
 
     // Блок атомарных методов

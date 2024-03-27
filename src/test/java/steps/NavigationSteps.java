@@ -24,6 +24,6 @@ public class NavigationSteps extends BaseSteps {
     }
 
     public void navigateToDashboardByUrl() {
-        dashboardPage = new DashboardPage(driver);
+        dashboardPage = new DashboardPage(driver, true);
     }
 }

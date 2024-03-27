@@ -38,8 +38,4 @@ public class ReadProperties {
     public static int timeout()  {
         return Integer.parseInt(properties.getProperty("timeout"));
     }
-
-    public static int pageLoadTimeout()  {
-        return Integer.parseInt(properties.getProperty("pageLoadTimeout"));
-    }
 }
