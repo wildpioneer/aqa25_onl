@@ -17,11 +17,7 @@ public class DashboardPage extends BasePage {
 
     // Блок иницализации
     public DashboardPage(WebDriver driver) {
-        this(driver, false);
-    }
-
-    public DashboardPage(WebDriver driver, boolean openPageByUrl) {
-        super(driver, openPageByUrl);
+        super(driver);
 
         topMenuPage = new TopMenuPage(driver);
     }

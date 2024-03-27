@@ -16,11 +16,7 @@ public abstract class ProjectBasePage extends BasePage {
     private final By suiteModeSingleTypeLocator = By.id("suite_mode_single");
 
     public ProjectBasePage(WebDriver driver) {
-        this(driver, false);
-    }
-
-    public ProjectBasePage(WebDriver driver, boolean openPageByUrl) {
-        super(driver, openPageByUrl);
+        super(driver);
 
         topMenuPage = new TopMenuPage(driver);
     }

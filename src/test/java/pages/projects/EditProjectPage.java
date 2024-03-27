@@ -8,11 +8,7 @@ public class EditProjectPage extends ProjectBasePage {
     private final static String pagePath = "/index.php?/admin/projects/add/1";
 
     public EditProjectPage(WebDriver driver) {
-        this(driver, false);
-    }
-
-    public EditProjectPage(WebDriver driver, boolean openPageByUrl) {
-        super(driver, openPageByUrl);
+        super(driver);
 
         topMenuPage = new TopMenuPage(driver);
     }

@@ -12,11 +12,7 @@ public class AddProjectPage extends ProjectBasePage {
     private final By addProjectButtonLocator = By.id("accept");
 
     public AddProjectPage(WebDriver driver) {
-        this(driver, false);
-    }
-
-    public AddProjectPage(WebDriver driver, boolean openPageByUrl) {
-        super(driver, openPageByUrl);
+        super(driver);
 
         topMenuPage = new TopMenuPage(driver);
     }
