@@ -4,7 +4,6 @@ import configuration.ReadProperties;
 import core.BrowserService;
 import org.testng.ITestContext;
 import utils.InvokedListener;
-import utils.Listener;
 import core.WaitsService;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
