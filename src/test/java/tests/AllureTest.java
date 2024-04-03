@@ -4,6 +4,8 @@ import io.qameta.allure.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+@Epic("Allure Epic")
+@Feature("Allure Feature")
 public class AllureTest {
 
     @Test(description = "Human-readable test name")
@@ -25,6 +27,7 @@ public class AllureTest {
 
     @Test
     @Severity(SeverityLevel.CRITICAL)
+    @Story("Test Story")
     public void testSeverity() {
         Assert.assertTrue(true);
     }
@@ -41,5 +44,13 @@ public class AllureTest {
     public void testIssue() {
         Assert.assertTrue(true);
     }
+
+    @Test
+    @Link("https://example.org")
+    @Link(name = "allureLink", type = "mylink", url = "https://onliner.by")
+    public void testLink() {
+        Assert.assertTrue(true);
+    }
+
 
 }

@@ -3,6 +3,7 @@ package pages;
 import baseEntities.BasePage;
 import configuration.ReadProperties;
 import core.BrowserService;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -65,6 +66,7 @@ public class LoginPage extends BasePage {
     public String getErrorText() {
         return getErrorTextLabel().getText();
     }
+
 
     private void login(String username, String password) {
         this

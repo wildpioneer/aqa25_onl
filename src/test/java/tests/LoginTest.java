@@ -2,6 +2,7 @@ package tests;
 
 import baseEntities.BaseTest;
 import configuration.ReadProperties;
+import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.DashboardPage;
@@ -34,5 +35,14 @@ public class LoginTest extends BaseTest {
                         .getErrorText(),
                 "Email/Login or Password is incorrect. Please try again."
         );
+    }
+
+    @Test
+    public void simpleTest() {
+        LoginPage loginPage = new LoginPage(driver);
+
+        driver.findElement(By.id("name")).sendKeys("sadasdasd");
+        driver.findElement(By.id("password")).sendKeys("sadasdasd");
+        driver.findElement(By.id("button_primary")).click();
     }
 }
