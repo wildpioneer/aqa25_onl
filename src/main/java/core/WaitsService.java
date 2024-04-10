@@ -50,6 +50,10 @@ public class WaitsService {
         return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
     }
 
+    public List<WebElement> waitForAllElementsLocatedBy(By locator) {
+        return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
+    }
+
     public WebElement fluentWaitForElement(By by) {
         FluentWait<WebDriver> fluent = new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(30))

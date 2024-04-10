@@ -3,6 +3,9 @@ package pages;
 import baseEntities.BasePage;
 import configuration.ReadProperties;
 import core.BrowserService;
+import elements.Button;
+import elements.Input;
+import elements.UIElement;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -33,8 +36,8 @@ public class LoginPage extends BasePage {
     }
 
     // Блок атомарных методов
-    public WebElement getEmailInput() {
-        return waitsService.waitForVisibilityLocatedBy(emailInputLocator);
+    public Input getEmailInput() {
+        return new Input(driver, emailInputLocator);
     }
 
     public LoginPage setEmail(String value) {
@@ -42,8 +45,8 @@ public class LoginPage extends BasePage {
         return this;
     }
 
-    public WebElement getPasswordInput() {
-        return waitsService.waitForVisibilityLocatedBy(passwordInputLocator);
+    public Input getPasswordInput() {
+        return new Input(driver, passwordInputLocator);
     }
 
     public LoginPage setPassword(String value) {
@@ -51,8 +54,8 @@ public class LoginPage extends BasePage {
         return this;
     }
 
-    public WebElement getLoginButton() {
-        return waitsService.waitForVisibilityLocatedBy(loginButtonLocator);
+    public Button getLoginButton() {
+        return new Button(driver, loginButtonLocator);
     }
 
     public WebElement getErrorTextLabel() {
