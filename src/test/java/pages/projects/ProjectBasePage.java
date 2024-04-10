@@ -1,12 +1,14 @@
 package pages.projects;
 
-import baseEntities.BasePage;
+import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import pages.TopMenuPage;
 
-public abstract class ProjectBasePage extends BasePage {
+import static com.codeborne.selenide.Selenide.$;
+
+public abstract class ProjectBasePage {
     public TopMenuPage topMenuPage;
 
     // Блок описания локаторов для элементов
@@ -15,25 +17,19 @@ public abstract class ProjectBasePage extends BasePage {
     private final By show_announcementCheckboxLocator = By.id("show_announcement");
     private final By suiteModeSingleTypeLocator = By.id("suite_mode_single");
 
-    public ProjectBasePage(WebDriver driver) {
-        super(driver);
-
-        topMenuPage = new TopMenuPage(driver);
+    public SelenideElement nameInput() {
+        return $(nameInputLocator);
     }
 
-    public WebElement nameInput() {
-        return waitsService.waitForVisibilityLocatedBy(nameInputLocator);
+    public SelenideElement announcementTextArea() {
+        return $(announcementTextAreaLocator);
     }
 
-    public WebElement announcementTextArea() {
-        return waitsService.waitForVisibilityLocatedBy(announcementTextAreaLocator);
+    public SelenideElement show_announcementCheckbox() {
+        return $(show_announcementCheckboxLocator);
     }
 
-    public WebElement show_announcementCheckbox() {
-        return waitsService.waitForVisibilityLocatedBy(show_announcementCheckboxLocator);
-    }
-
-    public WebElement suiteModeSingleType() {
-        return waitsService.waitForVisibilityLocatedBy(suiteModeSingleTypeLocator);
+    public SelenideElement suiteModeSingleType() {
+        return $(suiteModeSingleTypeLocator);
     }
 }

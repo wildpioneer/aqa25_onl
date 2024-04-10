@@ -4,25 +4,23 @@ import baseEntities.BaseTest;
 import configuration.ReadProperties;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.DashboardPage;
-import pages.LoginPage;
 import steps.NavigationSteps;
 
-public class LoginStepsTest extends BaseTest {
+public class LoginTest1 extends BaseTest {
 
     @Test
     public void successfulLoginTest() throws InterruptedException {
-        NavigationSteps navigationSteps = new NavigationSteps(driver);
+        NavigationSteps navigationSteps = new NavigationSteps();
 
         Assert.assertTrue(
                 navigationSteps
                         .successfulLogin(ReadProperties.username(), ReadProperties.password())
-                        .isPageOpened());
+                        .getHeaderTitleLabel().isDisplayed());
     }
 
     @Test
     public void wrongPasswordLoginTest() {
-        NavigationSteps navigationSteps = new NavigationSteps(driver);
+        NavigationSteps navigationSteps = new NavigationSteps();
 
         Assert.assertEquals(
                 navigationSteps
@@ -32,7 +30,7 @@ public class LoginStepsTest extends BaseTest {
 
     @Test
     public void wrongEmailLoginTest() {
-        NavigationSteps navigationSteps = new NavigationSteps(driver);
+        NavigationSteps navigationSteps = new NavigationSteps();
 
         Assert.assertEquals(navigationSteps.incorrectLogin("sdasd", ReadProperties.password()).getErrorText(),
                 "Email/Login or Password is incorrect. Please try again.");

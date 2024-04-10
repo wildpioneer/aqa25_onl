@@ -1,38 +1,43 @@
 package baseEntities;
 
+import com.codeborne.selenide.AssertionMode;
+import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import com.codeborne.selenide.testng.SoftAsserts;
 import configuration.ReadProperties;
-import core.BrowserService;
-import org.testng.ITestContext;
-import utils.InvokedListener;
-import core.WaitsService;
-import org.openqa.selenium.WebDriver;
-import org.testng.annotations.*;
+import io.qameta.allure.selenide.AllureSelenide;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Listeners;
 
-//@Listeners(Listener.class)
-@Listeners(InvokedListener.class)
+import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static com.codeborne.selenide.Selenide.open;
+
+@Listeners({SoftAsserts.class})
 public class BaseTest {
-    protected WebDriver driver;
-    protected WaitsService waitsService;
+
+    @BeforeSuite
+    public void setupSuite() {
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+
+        Configuration.baseUrl = ReadProperties.getUrl();
+        Configuration.headless = ReadProperties.isHeadless();
+        Configuration.browser = ReadProperties.browserName();
+        Configuration.pageLoadTimeout = ReadProperties.pageLoadTimeout() * 1000;
+        Configuration.timeout = ReadProperties.timeout() * 1000;
+        Configuration.assertionMode = AssertionMode.SOFT;
+        Configuration.fastSetValue = true;
+    }
 
     @BeforeMethod
-    public void setup(ITestContext iTestContext) {
-        driver = new BrowserService().getDriver();
-        this.setDriverToContext(iTestContext, driver);
-        waitsService = new WaitsService(driver);
-
-        driver.get(ReadProperties.getUrl());
+    public void setupBrowser() {
+        open("/");
+        //WebDriverRunner.getWebDriver().manage().window().maximize();
     }
 
     @AfterMethod
     public void tearDown() {
-        driver.quit();
-    }
-
-    public static void setDriverToContext(ITestContext iTestContext, WebDriver driver){
-        iTestContext.setAttribute("WebDriver", driver);
-    }
-
-    public static WebDriver getDriverFromContext(ITestContext iTestContext){
-        return (WebDriver) iTestContext.getAttribute("WebDriver") ;
+        closeWebDriver();
     }
 }

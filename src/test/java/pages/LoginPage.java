@@ -1,15 +1,16 @@
 package pages;
 
-import baseEntities.BasePage;
-import configuration.ReadProperties;
-import core.BrowserService;
-import io.qameta.allure.Step;
+import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class LoginPage extends BasePage {
-    private final static String pagePath = "";
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
+
+public class LoginPage {
+    private final static String pagePath = "/";
 
     // Блок описания локаторов для элементов
     private static final By emailInputLocator = By.id("name");
@@ -18,23 +19,13 @@ public class LoginPage extends BasePage {
     private final By errorTextLabelLocator = By.className("error-text");
 
     // Блок иницализации
-    public LoginPage(WebDriver driver) {
-        super(driver);
-    }
-
-    @Override
-    protected By getPageIdentifier() {
-        return emailInputLocator;
-    }
-
-    @Override
-    protected String getPagePath() {
-        return pagePath;
+    public void openPage() {
+        open(pagePath);
     }
 
     // Блок атомарных методов
-    public WebElement getEmailInput() {
-        return waitsService.waitForVisibilityLocatedBy(emailInputLocator);
+    public SelenideElement getEmailInput() {
+        return $(emailInputLocator).shouldBe(visible);
     }
 
     public LoginPage setEmail(String value) {
@@ -42,8 +33,8 @@ public class LoginPage extends BasePage {
         return this;
     }
 
-    public WebElement getPasswordInput() {
-        return waitsService.waitForVisibilityLocatedBy(passwordInputLocator);
+    public SelenideElement getPasswordInput() {
+        return $(passwordInputLocator);
     }
 
     public LoginPage setPassword(String value) {
@@ -51,12 +42,12 @@ public class LoginPage extends BasePage {
         return this;
     }
 
-    public WebElement getLoginButton() {
-        return waitsService.waitForVisibilityLocatedBy(loginButtonLocator);
+    public SelenideElement getLoginButton() {
+        return $(loginButtonLocator);
     }
 
-    public WebElement getErrorTextLabel() {
-        return waitsService.waitForVisibilityLocatedBy(errorTextLabelLocator);
+    public SelenideElement getErrorTextLabel() {
+        return $(errorTextLabelLocator);
     }
 
     public void clickLoginButton() {
@@ -77,7 +68,7 @@ public class LoginPage extends BasePage {
 
     public DashboardPage successfulLogin(String username, String password) {
         login(username, password);
-        return new DashboardPage(driver);
+        return new DashboardPage();
     }
 
     public LoginPage incorrectLogin(String username, String password) {

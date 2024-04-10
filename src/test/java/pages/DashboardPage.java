@@ -1,12 +1,12 @@
 package pages;
 
-import baseEntities.BasePage;
-import configuration.ReadProperties;
+import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
-public class DashboardPage extends BasePage {
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
+
+public class DashboardPage {
     private final static String pagePath = "/index.php?/dashboard";
 
     // Блок описания локаторов для элементов
@@ -16,24 +16,12 @@ public class DashboardPage extends BasePage {
     public TopMenuPage topMenuPage;
 
     // Блок иницализации
-    public DashboardPage(WebDriver driver) {
-        super(driver);
-
-        topMenuPage = new TopMenuPage(driver);
-    }
-
-    @Override
-    protected By getPageIdentifier() {
-        return headerTitleLabelLocator;
-    }
-
-    @Override
-    protected String getPagePath() {
-        return pagePath;
+    public void openPage() {
+        open(pagePath);
     }
 
     // Блок атомарных методов
-    public WebElement getHeaderTitleLabel() {
-        return waitsService.waitForVisibilityLocatedBy(headerTitleLabelLocator);
+    public SelenideElement getHeaderTitleLabel() {
+        return $(headerTitleLabelLocator);
     }
 }

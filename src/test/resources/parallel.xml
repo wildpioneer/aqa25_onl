@@ -3,8 +3,8 @@
 <suite name="Main Suite">
     <test name="Smoke" parallel="classes" thread-count="2">
         <classes>
-            <class name="tests.LoginStepsTest"/>
             <class name="tests.LoginTest"/>
+            <class name="tests.LoginTest1"/>
         </classes>
     </test>
 </suite>

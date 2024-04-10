@@ -1,9 +1,11 @@
 package pages.projects;
 
+import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import pages.TopMenuPage;
+
+import static com.codeborne.selenide.Selenide.$;
 
 public class AddProjectPage extends ProjectBasePage {
     private final static String pagePath = "/index.php?/admin/projects/add/1";
@@ -12,22 +14,10 @@ public class AddProjectPage extends ProjectBasePage {
     private final By addProjectButtonLocator = By.id("accept");
 
     public AddProjectPage(WebDriver driver) {
-        super(driver);
-
-        topMenuPage = new TopMenuPage(driver);
+        topMenuPage = new TopMenuPage();
     }
 
-    @Override
-    protected By getPageIdentifier() {
-        return addProjectButtonLocator;
-    }
-
-    @Override
-    protected String getPagePath() {
-        return pagePath;
-    }
-
-    public WebElement getAddProjectButton() {
-        return waitsService.waitForVisibilityLocatedBy(addProjectButtonLocator);
+    public SelenideElement getAddProjectButton() {
+        return $(addProjectButtonLocator);
     }
 }
