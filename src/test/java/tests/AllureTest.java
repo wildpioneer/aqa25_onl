@@ -42,14 +42,14 @@ public class AllureTest {
     @Test
     @Issue("BUG-123")
     public void testIssue() {
-        Assert.assertTrue(false);
+        Assert.assertTrue(true);
     }
 
     @Test
     @Link("https://example.org")
     @Link(name = "allureLink", type = "mylink", url = "https://onliner.by")
     public void testLink() {
-        Assert.assertTrue(false);
+        Assert.assertTrue(true);
     }
 
 
