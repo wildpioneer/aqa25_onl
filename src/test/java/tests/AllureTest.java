@@ -49,7 +49,7 @@ public class AllureTest {
     @Link("https://example.org")
     @Link(name = "allureLink", type = "mylink", url = "https://onliner.by")
     public void testLink() {
-        Assert.assertTrue(true);
+        Assert.assertTrue(false);
     }
 
 
