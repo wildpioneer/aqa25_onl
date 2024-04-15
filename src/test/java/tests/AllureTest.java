@@ -42,7 +42,7 @@ public class AllureTest {
     @Test
     @Issue("BUG-123")
     public void testIssue() {
-        Assert.assertTrue(true);
+        Assert.assertTrue(false);
     }
 
     @Test
