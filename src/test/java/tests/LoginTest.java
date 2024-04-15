@@ -33,6 +33,6 @@ public class LoginTest extends BaseTest {
         NavigationSteps navigationSteps = new NavigationSteps(driver);
 
         Assert.assertEquals(navigationSteps.incorrectLogin("sdasd", ReadProperties.password()).getErrorText(),
-                "Email/Login or Password is incorrect. Please try again.");
+                "Email/Login or Password is incorrect. Please try again.1");
     }
 }
