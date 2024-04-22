@@ -9,16 +9,10 @@
 name: Java CI with Maven
 
 on:
-  workflow_dispatch:
-    inputs:
-      deployment_target:
-        description: Choose target
-        required: true
-        default: smoke_test
-        type: choice
-        options:
-          - smoke_test
-          - regression_test
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
 
 jobs:
   build:
@@ -39,13 +33,8 @@ jobs:
       - name: Update dependency graph
         uses: advanced-security/maven-dependency-submission-action@571e99aab1055c2e71a1e2309b9691de18d6b7d6
 
-      - name: Run Smoke Test
-        if: "github.event.inputs.deployment_target == 'smoke_test'"
-        run: mvn clean -DsuiteFileName=smoke.xml test
-
-      - name: Run Regression Test
-        if: "github.event.inputs.deployment_target == 'regression_test'"
-        run: mvn clean -DsuiteFileName=regression.xml test
+      - name: Test with Maven
+        run: mvn clean test
 
       - name: Load test report history
         uses: actions/checkout@v3

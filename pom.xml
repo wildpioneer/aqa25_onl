@@ -52,9 +52,9 @@
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
-                    <!--suiteXmlFiles>
+                    <suiteXmlFiles>
                         <suiteXmlFile>target/test-classes/${suiteFileName}</suiteXmlFile>
-                    </suiteXmlFiles-->
+                    </suiteXmlFiles>
                 </configuration>
                 <dependencies>
                     <dependency>

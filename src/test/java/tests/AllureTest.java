@@ -1,12 +1,13 @@
 package tests;
 
+import baseEntities.BaseTest;
 import io.qameta.allure.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 @Epic("Allure Epic")
 @Feature("Allure Feature")
-public class AllureTest {
+public class AllureTest extends BaseTest {
 
     @Test(description = "Human-readable test name")
     public void testName() {
@@ -51,6 +52,4 @@ public class AllureTest {
     public void testLink() {
         Assert.assertTrue(true);
     }
-
-
 }
