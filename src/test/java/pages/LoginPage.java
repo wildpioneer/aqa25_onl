@@ -3,11 +3,16 @@ package pages;
 import baseEntities.BasePage;
 import configuration.ReadProperties;
 import core.BrowserService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import tests.LoggerTest;
 
 public class LoginPage extends BasePage {
+    private Logger logger = LogManager.getLogger(LoginPage.class);
+
     private final static String pagePath = "";
 
     // Блок описания локаторов для элементов
@@ -19,6 +24,7 @@ public class LoginPage extends BasePage {
     // Блок иницализации
     public LoginPage(WebDriver driver) {
         super(driver);
+        logger.info("Start LoginPage constructor...");
     }
 
     @Override

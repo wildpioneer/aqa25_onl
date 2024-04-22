@@ -16,4 +16,11 @@ public class LoggerTest {
         logger.error("Error Message: ...");
         logger.fatal("Fatal Message: ...");
     }
+
+    @Test
+    public void manyLogsTest() {
+        for (int i = 0; i < 100; i++) {
+            logger.info("Info Message: ... " + i);
+        }
+    }
 }
