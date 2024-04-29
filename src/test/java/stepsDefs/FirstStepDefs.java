@@ -1,33 +1,34 @@
 package stepsDefs;
 
+import baseEntities.BaseTest;
 import configuration.ReadProperties;
-import core.BrowserService;
 import io.cucumber.datatable.DataTable;
-import io.cucumber.java.After;
 import io.cucumber.java.en.*;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import pages.DashboardPage;
 import pages.LoginPage;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
-public class FirstStepDefs {
-    WebDriver driver;
-    LoginPage loginPage;
+public class FirstStepDefs extends BaseTest {
+    private BaseTest baseTest;
+    private LoginPage loginPage;
+
+    public FirstStepDefs(BaseTest baseTest) {
+        this.baseTest = baseTest;
+    }
 
     @Given("открыт браузер")
     @Given("init browser")
     public void startBrowser() {
-        driver = new BrowserService().getDriver();
+
     }
 
     @When("страница логина открыта")
     @Given("open login page")
     public void openLoginPage() {
-        driver.get(ReadProperties.getUrl());
+        baseTest.driver.get(ReadProperties.getUrl());
         loginPage = new LoginPage(driver);
     }
 
@@ -133,16 +134,6 @@ public class FirstStepDefs {
 
     @Then("dashboard page is displayed")
     public void isDashboardPageDisplayed() {
-        Assert.assertTrue(new DashboardPage(driver).isPageOpened());
-    }
-
-    @Then("error {string} is displayed")
-    public void errorIsDisplayed(String errorText) {
-        Assert.assertEquals(loginPage.getErrorText(), errorText);
-    }
-
-    @After
-    public void tearDown() {
-        driver.quit();
+        Assert.assertTrue(new DashboardPage(baseTest.driver).isPageOpened());
     }
 }
