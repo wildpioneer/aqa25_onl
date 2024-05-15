@@ -8,9 +8,6 @@ import steps.NavigationSteps;
 
 public class LoginTest extends BaseTest {
 
-    ///fsdfsdfds
-
-
     @Test
     public void successfulLoginTest() throws InterruptedException {
         NavigationSteps navigationSteps = new NavigationSteps(driver);
