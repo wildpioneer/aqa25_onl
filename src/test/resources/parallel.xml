@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Main Suite">
-    <test name="Smoke" parallel="classes" thread-count="2">
+    <test name="GUI" parallel="classes" thread-count="2">
         <classes>
             <class name="tests.gui.LoginTest"/>
             <class name="tests.gui.LoginTest"/>
         </classes>
+    </test>
+    <test name="API" parallel="methods" thread-count="4">
+
     </test>
 </suite>
