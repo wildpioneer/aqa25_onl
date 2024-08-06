@@ -51,6 +51,4 @@ public class AllureTest {
     public void testLink() {
         Assert.assertTrue(true);
     }
-
-
 }
